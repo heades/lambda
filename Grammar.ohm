@@ -1,8 +1,14 @@
 Grammer {
   literal = letter | digit
   varName = letter literal*
-  term = varName
-       | "(" space* term space* ")"                             -- parens       
-       | "fun" varName "{" term "}" -- lambda
-       | term space term                                       -- application
+  lambda = "fun" space+ varName space+ "{" space* term space* "}"
+  tail = lambda                                                -- lambda
+       | tail space+ term                                      -- application
+       | "(" space* term space* ")"                            -- parens       
+       | varName       
+
+  term = lambda                                                -- lambda
+       | term space+ tail                                      -- application
+       | "(" space* term space* ")"                            -- parens
+       | varName            
 }
