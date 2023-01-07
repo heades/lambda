@@ -35,5 +35,3 @@ export async function repl(): Promise<any> {
             return repl();
     }
 }
-
-repl();
