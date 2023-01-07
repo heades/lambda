@@ -50,14 +50,3 @@ export class Parser {
     }
 }
 
-let parser = new Parser();
-let tk: Maybe.Maybe<Syntax.Term> = parser.parseTerm("(fun x { x y }) z");
-
-switch (tk.kind) {
-    case "just":
-        console.log(Pretty.pretty(tk.value));
-        break;
-
-    case "nothing":
-        console.log("Parse error");
-}
